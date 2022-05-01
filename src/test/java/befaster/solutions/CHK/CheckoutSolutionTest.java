@@ -7,6 +7,9 @@ import static org.junit.Assert.*;
 public class CheckoutSolutionTest {
 
     @Test
-    public void ()
+    public void totalWithNoOfferItems() {
+        assertEquals();
+
+    }
 
 }

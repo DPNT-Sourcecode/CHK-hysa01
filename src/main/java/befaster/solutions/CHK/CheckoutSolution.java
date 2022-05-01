@@ -19,7 +19,10 @@ public class CheckoutSolution {
         Map<String, Integer> itemList = new HashMap<>();
         itemList.put("A", 50);
         itemList.put("B", 30);
-        itemList.put("C", )
+        itemList.put("C", 20);
+        itemList.put("D", 15);
+
+
     }
 }
 
