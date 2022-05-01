@@ -6,10 +6,10 @@ import static org.junit.Assert.*;
 
 public class CheckoutSolutionTest {
 
-    @Test
-    public void totalWithNoOfferItems() {
-//        assertEquals(35, CheckoutSolution.checkout("CD"));
-
-    }
+//    @Test
+//    public void totalWithNoOfferItems() {
+////        assertEquals(35, CheckoutSolution.checkout("CD"));
+//
+//    }
 
 }

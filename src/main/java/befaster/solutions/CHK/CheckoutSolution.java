@@ -21,6 +21,7 @@ public class CheckoutSolution {
         itemList.put("B", 30);
         itemList.put("C", 20);
         itemList.put("D", 15);
+        return 0;
 
 
     }
