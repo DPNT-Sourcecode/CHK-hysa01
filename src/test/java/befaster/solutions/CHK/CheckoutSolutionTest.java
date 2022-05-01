@@ -8,7 +8,7 @@ public class CheckoutSolutionTest {
 
     @Test
     public void totalWithNoOfferItems() {
-        assertEquals();
+//        assertEquals(35, CheckoutSolution.checkout("CD"));
 
     }
 
