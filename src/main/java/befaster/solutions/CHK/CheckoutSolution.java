@@ -12,17 +12,19 @@ public class CheckoutSolution {
         Map<Character, Integer> checkoutItems = new HashMap<>();
         Integer total = 0;
 
-        for (int i = 0; i < skus.length(); i++) {
-            char c = skus.charAt(i);
-            checkoutItems.put(c, checkoutItems.getOrDefault(c, 0) + 1);
-        }
+        if (skusIsInvalid(skus)) {
+            return -1;
+        } else {
+            for (int i = 0; i < skus.length(); i++) {
+                char c = skus.charAt(i);
+                checkoutItems.put(c, checkoutItems.getOrDefault(c, 0) + 1);
+            }
+            for (Map.Entry<Character, Integer> entry : checkoutItems.entrySet()) {
+                Character item = entry.getKey();
+                Integer quantity = entry.getValue();
+                Integer price = itemPriceMap.get(item);
 
-        for (Map.Entry<Character, Integer> entry : checkoutItems.entrySet()) {
-            Character item = entry.getKey();
-            Integer quantity = entry.getValue();
-            Integer price = itemPriceMap.get(item);
 
-            if (itemPriceMap.containsKey(item)) {
                 if (OfferPriceMap.offerPriceMap.containsKey(item)) {
                     Integer offerQuantity = OfferPriceMap.offerPriceMap.get(item).quantity;
                     Integer offerPrice = OfferPriceMap.offerPriceMap.get(item).price;
@@ -35,12 +37,22 @@ public class CheckoutSolution {
                     else {
                         total += quantity * price;
                     }
+                } else {
+                    total += quantity * price;
                 }
-            }
-            else {
-                return -1;
             }
         }
         return total;
     }
+
+    private static boolean skusIsInvalid(String skus) {
+        char[] items = skus.toCharArray();
+        for (char item : items) {
+            if (!itemPriceMap.containsKey(item)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
+
