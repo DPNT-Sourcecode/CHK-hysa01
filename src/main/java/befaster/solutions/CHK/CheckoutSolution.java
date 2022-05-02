@@ -20,7 +20,11 @@ public class CheckoutSolution {
 
         for (int i = 0; i < skus.length(); i++) {
             char item = skus.charAt(i);
-            checkoutItems.put(item,  )
+            checkoutItems.put(item, checkoutItems.getOrDefault(item, 0) + 1);
+        }
+
+        for (Map.Entry<Character, Integer> entry : checkoutItems.entrySet()) {
+            
         }
 
 
@@ -28,5 +32,3 @@ public class CheckoutSolution {
 
     }
 }
-
-

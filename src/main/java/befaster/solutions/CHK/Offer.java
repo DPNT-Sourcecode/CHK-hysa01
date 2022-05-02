@@ -10,5 +10,3 @@ public class Offer {
         this.price = price;
     }
 }
-
-
