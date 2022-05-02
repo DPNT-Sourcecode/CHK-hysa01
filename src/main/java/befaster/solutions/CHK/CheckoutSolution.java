@@ -20,12 +20,16 @@ public class CheckoutSolution {
         for (Map.Entry<Character, Integer> entry : checkoutItems.entrySet()) {
             Character item = entry.getKey();
             Integer quantity = entry.getValue();
+            Integer price = itemPriceMap.get(item);
+
             if (itemPriceMap.containsKey(item)) {
                 if (OfferPriceMap.offerPriceMap.containsKey(item)) {
                     Integer offerQuantity = OfferPriceMap.offerPriceMap.get(item).quantity;
+                    Integer offerPrice = OfferPriceMap.offerPriceMap.get(item).price;
                     if (offerQuantity < quantity) {
-                        total += (quantity / offerQuantity) * 
+                        total += (quantity / offerQuantity) * offerPrice + (quantity % offerQuantity) * price;
                     }
+                    
                 }
             }
         }
@@ -35,5 +39,6 @@ public class CheckoutSolution {
 
     }
 }
+
 
 
