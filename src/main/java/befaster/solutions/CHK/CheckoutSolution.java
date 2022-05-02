@@ -16,10 +16,17 @@ public class CheckoutSolution {
     //| C    | 20    |                |
     //| D    | 15    |                |
     //+------+-------+----------------+
+        Map<Character, Integer> checkoutItems = new HashMap<>();
+
+        for (int i = 0; i < skus.length(); i++) {
+            char item = skus.charAt(i);
+            checkoutItems.put(item,  )
+        }
 
 
 
 
     }
 }
+
 
