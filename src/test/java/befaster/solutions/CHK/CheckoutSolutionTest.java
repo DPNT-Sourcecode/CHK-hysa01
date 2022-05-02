@@ -18,10 +18,11 @@ public class CheckoutSolutionTest {
 
     @Test
     void testIllegalInputLowerCase() {
-        assertEquals(-1, checkoutSolution.checkout("abab"));
-        assertEquals(Optional.of(-1), checkoutSolution.checkout("gfhj"));
+        assertEquals(-1, checkoutSolution.checkout("abab"), 0.0);
+        assertEquals(-1, checkoutSolution.checkout("gfhj"), 0.0);
 
 
     }
 
 }
+
