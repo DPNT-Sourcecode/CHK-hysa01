@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CheckoutSolution {
-    public Integer checkout(String skus) {
+    public static Integer checkout(String skus) {
     //        Our price table and offers:
     //+------+-------+----------------+
     //| Item | Price | Special offers |
@@ -16,13 +16,10 @@ public class CheckoutSolution {
     //| C    | 20    |                |
     //| D    | 15    |                |
     //+------+-------+----------------+
-        Map<String, Integer> itemList = new HashMap<>();
-        itemList.put("A", 50);
-        itemList.put("B", 30);
-        itemList.put("C", 20);
-        itemList.put("D", 15);
-        return 0;
+
+
 
 
     }
 }
+
