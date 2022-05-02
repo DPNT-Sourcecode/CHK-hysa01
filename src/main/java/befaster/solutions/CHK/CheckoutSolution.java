@@ -5,9 +5,12 @@ import befaster.runner.SolutionNotImplementedException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static befaster.solutions.CHK.ItemPriceMap.itemPriceMap;
+
 public class CheckoutSolution {
     public static Integer checkout(String skus) {
         Map<Character, Integer> checkoutItems = new HashMap<>();
+        Integer total = 0;
 
         for (int i = 0; i < skus.length(); i++) {
             char c = skus.charAt(i);
@@ -17,7 +20,14 @@ public class CheckoutSolution {
         for (Map.Entry<Character, Integer> entry : checkoutItems.entrySet()) {
             Character item = entry.getKey();
             Integer quantity = entry.getValue();
-            if (itemPriceMap.)
+            if (itemPriceMap.containsKey(item)) {
+                if (OfferPriceMap.offerPriceMap.containsKey(item)) {
+                    Integer offerQuantity = OfferPriceMap.offerPriceMap.get(item).quantity;
+                    if (offerQuantity < quantity) {
+                        total += (quantity / offerQuantity) * 
+                    }
+                }
+            }
         }
 
 
@@ -25,4 +35,5 @@ public class CheckoutSolution {
 
     }
 }
+
 
