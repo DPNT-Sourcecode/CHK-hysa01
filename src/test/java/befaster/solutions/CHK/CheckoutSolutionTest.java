@@ -17,12 +17,13 @@ public class CheckoutSolutionTest {
     }
 
     @Test
-    void testIllegalInputLowerCase() {
-        assertEquals(-1, checkoutSolution.checkout("abab"), 0.0);
-        assertEquals(-1, checkoutSolution.checkout("gfhj"), 0.0);
+    public void testIllegalInputLowerCase() {
+        assertEquals(-1, checkoutSolution.checkout("abab").intValue());
+        assertEquals(-1, checkoutSolution.checkout("gfhj").intValue());
 
 
     }
 
 }
+
 
