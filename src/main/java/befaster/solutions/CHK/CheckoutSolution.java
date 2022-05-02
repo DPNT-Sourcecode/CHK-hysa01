@@ -7,24 +7,17 @@ import java.util.Map;
 
 public class CheckoutSolution {
     public static Integer checkout(String skus) {
-    //        Our price table and offers:
-    //+------+-------+----------------+
-    //| Item | Price | Special offers |
-    //+------+-------+----------------+
-    //| A    | 50    | 3A for 130     |
-    //| B    | 30    | 2B for 45      |
-    //| C    | 20    |                |
-    //| D    | 15    |                |
-    //+------+-------+----------------+
         Map<Character, Integer> checkoutItems = new HashMap<>();
 
         for (int i = 0; i < skus.length(); i++) {
-            char item = skus.charAt(i);
-            checkoutItems.put(item, checkoutItems.getOrDefault(item, 0) + 1);
+            char c = skus.charAt(i);
+            checkoutItems.put(c, checkoutItems.getOrDefault(c, 0) + 1);
         }
 
         for (Map.Entry<Character, Integer> entry : checkoutItems.entrySet()) {
-            
+            Character item = entry.getKey();
+            Integer quantity = entry.getValue();
+            if (itemPriceMap.)
         }
 
 
@@ -32,3 +25,4 @@ public class CheckoutSolution {
 
     }
 }
+
