@@ -29,8 +29,16 @@ public class CheckoutSolution {
                     if (offerQuantity < quantity) {
                         total += (quantity / offerQuantity) * offerPrice + (quantity % offerQuantity) * price;
                     }
-                    
+                    else if (offerQuantity.equals(quantity)) {
+                        total += offerPrice;
+                    }
+                    else {
+                        total += quantity * price;
+                    }
                 }
+            }
+            else {
+                return -1;
             }
         }
 
@@ -39,6 +47,7 @@ public class CheckoutSolution {
 
     }
 }
+
 
 
 
