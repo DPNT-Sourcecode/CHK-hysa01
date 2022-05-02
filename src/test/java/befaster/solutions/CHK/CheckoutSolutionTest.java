@@ -29,8 +29,8 @@ public class CheckoutSolutionTest {
     }
 
     @Test
-    public void testIllegalInputZeroItems() {
-        assertEquals(-1, checkoutSolution.checkout("").intValue());
+    public void testZeroItems() {
+        assertEquals(0, checkoutSolution.checkout("").intValue());
     }
 
     @Test

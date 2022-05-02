@@ -14,7 +14,10 @@ public class CheckoutSolution {
 
         if (skusIsInvalid(skus)) {
             return -1;
-        } else {
+        } else if (skus.equals("")){
+            return 0;
+        }
+        else {
             for (int i = 0; i < skus.length(); i++) {
                 char c = skus.charAt(i);
                 checkoutItems.put(c, checkoutItems.getOrDefault(c, 0) + 1);
@@ -46,16 +49,13 @@ public class CheckoutSolution {
     }
 
     private static boolean skusIsInvalid(String skus) {
-        if (skus.equals("")) {
-            return true;
-        } else {
-            char[] items = skus.toCharArray();
-            for (char item : items) {
-                if (!itemPriceMap.containsKey(item) || item == ' ') {
-                    return true;
-                }
+        char[] items = skus.toCharArray();
+        for (char item : items) {
+            if (!itemPriceMap.containsKey(item) || item == ' ') {
+                return true;
             }
         }
         return false;
     }
 }
+
