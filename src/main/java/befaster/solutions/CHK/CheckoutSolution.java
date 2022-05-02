@@ -46,14 +46,16 @@ public class CheckoutSolution {
     }
 
     private static boolean skusIsInvalid(String skus) {
-        char[] items = skus.toCharArray();
-        for (char item : items) {
-            if (!itemPriceMap.containsKey(item) || item == ' ') {
-                return true;
+        if (skus.equals("")) {
+            return true;
+        } else {
+            char[] items = skus.toCharArray();
+            for (char item : items) {
+                if (!itemPriceMap.containsKey(item) || item == ' ') {
+                    return true;
+                }
             }
         }
         return false;
     }
 }
-
-
