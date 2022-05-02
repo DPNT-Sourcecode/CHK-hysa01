@@ -18,7 +18,7 @@ public class CheckoutSolutionTest {
 
     @Test
     void testIllegalInputLowerCase() {
-        assertEquals(Optional.of(-1), checkoutSolution.checkout("abab"));
+        assertEquals(-1, checkoutSolution.checkout("abab"));
         assertEquals(Optional.of(-1), checkoutSolution.checkout("gfhj"));
 
 
