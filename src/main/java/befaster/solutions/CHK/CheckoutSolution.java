@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static befaster.solutions.CHK.ItemPriceMap.itemPriceMap;
+import static befaster.solutions.CHK.FreebieOfferMap.freebieOfferMap;
+import static befaster.solutions.CHK.MultiPriceOfferMap.multiPriceOfferMap;
+
 
 public class CheckoutSolution {
     public static Integer checkout(String skus) {
@@ -20,15 +23,22 @@ public class CheckoutSolution {
                 char c = skus.charAt(i);
                 checkoutItems.put(c, checkoutItems.getOrDefault(c, 0) + 1);
             }
+
+            for (Character freebieOfferItem : freebieOfferMap.keySet()) {
+                
+            }
+
+
+
             for (Map.Entry<Character, Integer> entry : checkoutItems.entrySet()) {
                 Character item = entry.getKey();
                 Integer quantity = entry.getValue();
                 Integer price = itemPriceMap.get(item);
 
 
-                if (MultiPriceOfferMap.offerPriceMap.containsKey(item)) {
-                    Integer offerQuantity = MultiPriceOfferMap.offerPriceMap.get(item).quantity;
-                    Integer offerPrice = MultiPriceOfferMap.offerPriceMap.get(item).price;
+                if (multiPriceOfferMap.containsKey(item)) {
+                    Integer offerQuantity = multiPriceOfferMap.get(item).quantity;
+                    Integer offerPrice = multiPriceOfferMap.get(item).price;
                     if (offerQuantity < quantity) {
                         total += (quantity / offerQuantity) * offerPrice + (quantity % offerQuantity) * price;
                     }
@@ -56,3 +66,4 @@ public class CheckoutSolution {
         return false;
     }
 }
+
