@@ -22,4 +22,3 @@ public class MultiPriceOffer {
         return price;
     }
 }
-
