@@ -91,8 +91,48 @@ public class CheckoutSolution {
 
     private static Integer calculatePriceWithMultiPriceOffers(Character item, Integer quantity, Integer price) {
         Integer totalPrice = 0;
-        Integer biggestOfferQuantity = ()
+        Integer biggestOfferQuantity = ((MultiPriceOffer) multiPriceOfferMap.get(item).get(0)).getQuantity();
+        Integer biggestOfferPrice = ((MultiPriceOffer) multiPriceOfferMap.get(item).get(0)).getPrice();
+
+        if (multiPriceOfferMap.get(item).size() > 1) {
+            Integer nextBiggestOfferQuantity = ((MultiPriceOffer) multiPriceOfferMap.get(item).get(1)).getQuantity();
+            Integer nextBiggestOfferPrice = ((MultiPriceOffer) multiPriceOfferMap.get(item).get(1)).getPrice();
+
+            if (quantity > biggestOfferQuantity) {
+                totalPrice += quantity / biggestOfferQuantity * biggestOfferPrice;
+                if (quantity % biggestOfferQuantity > nextBiggestOfferQuantity) {
+                    totalPrice += quantity % biggestOfferQuantity / nextBiggestOfferQuantity * nextBiggestOfferPrice
+                            + quantity % biggestOfferQuantity % nextBiggestOfferQuantity * price;
+                } else if (quantity % biggestOfferQuantity == nextBiggestOfferQuantity) {
+                    totalPrice += nextBiggestOfferPrice;
+                } else {
+                    totalPrice += quantity % biggestOfferQuantity * price;
+                }
+            } else if (quantity.equals(biggestOfferQuantity)) {
+                totalPrice += biggestOfferPrice;
+            } else if (quantity < biggestOfferQuantity) {
+                if (quantity > nextBiggestOfferQuantity) {
+                    totalPrice += quantity / nextBiggestOfferQuantity * nextBiggestOfferPrice
+                            + quantity % nextBiggestOfferQuantity * price;
+                } else if (quantity.equals(nextBiggestOfferQuantity)) {
+                    totalPrice += nextBiggestOfferPrice;
+                } else {
+                    totalPrice += quantity * price;
+                }
+            }
+        } else {
+            if (quantity > biggestOfferQuantity) {
+                totalPrice += (quantity / biggestOfferQuantity) * biggestOfferPrice
+                        + (quantity % biggestOfferQuantity) * price;
+            } else if (quantity.equals(biggestOfferQuantity)) {
+                totalPrice += biggestOfferPrice;
+            } else {
+                totalPrice += quantity * price;
+            }
+        }
+        return totalPrice;
     }
 }
+
 
 
