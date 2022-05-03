@@ -15,13 +15,9 @@ public class CheckoutSolutionTest {
     public void testIllegalInputLowerCase() {
         assertEquals(-1, checkoutSolution.checkout("abab").intValue());
         assertEquals(-1, checkoutSolution.checkout("gfhj").intValue());
-    }
+        assertEquals(-1, checkoutSolution.checkout("-").intValue());
 
-//    @Test
-//    public void testIllegalInputNonExistentItem() {
-//        assertEquals(-1, checkoutSolution.checkout("EFGHIJ").intValue());
-//        assertEquals(-1, checkoutSolution.checkout("ABEFG").intValue());
-//    }
+    }
 
     @Test
     public void testZeroItems() {
@@ -38,12 +34,7 @@ public class CheckoutSolutionTest {
         assertEquals(90, checkoutSolution.checkout("L").intValue());
         assertEquals(15, checkoutSolution.checkout("M").intValue());
         assertEquals(10, checkoutSolution.checkout("O").intValue());
-        assertEquals(30, checkoutSolution.checkout("S").intValue());
-        assertEquals(20, checkoutSolution.checkout("T").intValue());
         assertEquals(20, checkoutSolution.checkout("W").intValue());
-        assertEquals(90, checkoutSolution.checkout("X").intValue());
-        assertEquals(10, checkoutSolution.checkout("Y").intValue());
-        assertEquals(50, checkoutSolution.checkout("Z").intValue());
 
     }
 
@@ -60,11 +51,11 @@ public class CheckoutSolutionTest {
         assertEquals(20, checkoutSolution.checkout("FF").intValue());
         assertEquals(10, checkoutSolution.checkout("F").intValue());
 
-        assertEquals(380, checkoutSolution.checkout("KKKKK").intValue());
-        assertEquals(300, checkoutSolution.checkout("KKKK").intValue());
-        assertEquals(230, checkoutSolution.checkout("KKK").intValue());
-        assertEquals(150, checkoutSolution.checkout("KK").intValue());
-        assertEquals(80, checkoutSolution.checkout("K").intValue());
+        assertEquals(310, checkoutSolution.checkout("KKKKK").intValue());
+        assertEquals(240, checkoutSolution.checkout("KKKK").intValue());
+        assertEquals(190, checkoutSolution.checkout("KKK").intValue());
+        assertEquals(120, checkoutSolution.checkout("KK").intValue());
+        assertEquals(70, checkoutSolution.checkout("K").intValue());
 
         assertEquals(250, checkoutSolution.checkout("PPPPPP").intValue());
         assertEquals(200, checkoutSolution.checkout("PPPPP").intValue());
@@ -92,6 +83,11 @@ public class CheckoutSolutionTest {
         assertEquals(130, checkoutSolution.checkout("VVV").intValue());
         assertEquals(90, checkoutSolution.checkout("VV").intValue());
         assertEquals(50, checkoutSolution.checkout("V").intValue());
+
+        assertEquals(75, checkoutSolution.checkout("HHHHHHHH").intValue());
+        assertEquals(90, checkoutSolution.checkout("HHHHHHHHHHH").intValue());
+        assertEquals(10, checkoutSolution.checkout("H").intValue());
+
     }
 
     @Test
@@ -105,6 +101,24 @@ public class CheckoutSolutionTest {
         assertEquals(320, checkoutSolution.checkout("EEEEEBBBBBBB").intValue());
 
         assertEquals(215, checkoutSolution.checkout("NNNNNMM").intValue());
+    }
+
+    @Test
+    public void testGroupDiscounts() {
+        assertEquals(20, checkoutSolution.checkout("S").intValue());
+        assertEquals(40, checkoutSolution.checkout("ST").intValue());
+        assertEquals(45, checkoutSolution.checkout("STX").intValue());
+        assertEquals(62, checkoutSolution.checkout("STXY").intValue());
+        assertEquals(82, checkoutSolution.checkout("STXYZ").intValue());
+        assertEquals(77, checkoutSolution.checkout("STXYM").intValue());
+        assertEquals(237, checkoutSolution.checkout("XPPPPPY").intValue());
+        assertEquals(45, checkoutSolution.checkout("TTT").intValue());
+        assertEquals(225, checkoutSolution.checkout("KXLTYG").intValue());
+        assertEquals(201, checkoutSolution.checkout("ZRQQRR").intValue());
+        assertEquals(107, checkoutSolution.checkout("XXXXXXX").intValue());
+        assertEquals(90, checkoutSolution.checkout("ZYXTSY").intValue());
+        assertEquals(55, checkoutSolution.checkout("YI").intValue());
+
     }
 
 }
