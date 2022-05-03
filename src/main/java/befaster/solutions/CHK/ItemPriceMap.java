@@ -16,7 +16,7 @@ public class ItemPriceMap {
         itemPriceMap.put('H', 10);
         itemPriceMap.put('I', 35);
         itemPriceMap.put('J', 60);
-        itemPriceMap.put('K', 80);
+        itemPriceMap.put('K', 70);
         itemPriceMap.put('L', 90);
         itemPriceMap.put('M', 15);
         itemPriceMap.put('N', 40);
@@ -24,15 +24,16 @@ public class ItemPriceMap {
         itemPriceMap.put('P', 50);
         itemPriceMap.put('Q', 30);
         itemPriceMap.put('R', 50);
-        itemPriceMap.put('S', 30);
+        itemPriceMap.put('S', 20);
         itemPriceMap.put('T', 20);
         itemPriceMap.put('U', 40);
         itemPriceMap.put('V', 50);
         itemPriceMap.put('W', 20);
-        itemPriceMap.put('X', 90);
-        itemPriceMap.put('Y', 10);
-        itemPriceMap.put('Z', 50);
+        itemPriceMap.put('X', 17);
+        itemPriceMap.put('Y', 20);
+        itemPriceMap.put('Z', 21);
 
     }
 
 }
+
