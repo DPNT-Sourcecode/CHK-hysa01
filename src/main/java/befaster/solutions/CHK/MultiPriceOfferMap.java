@@ -13,7 +13,7 @@ public class MultiPriceOfferMap {
 
         multiPriceOfferlistA.add(new MultiPriceOffer('A', 5, 200));
         multiPriceOfferlistA.add(new MultiPriceOffer('A', 3, 130));
-        multiPriceOfferlistA.add(new MultiPriceOffer('B', 2, 45));
+        multiPriceOfferlistB.add(new MultiPriceOffer('B', 2, 45));
 
 
 
@@ -22,3 +22,4 @@ public class MultiPriceOfferMap {
     }
 
 }
+

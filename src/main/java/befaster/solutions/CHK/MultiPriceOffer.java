@@ -10,9 +10,9 @@ public class MultiPriceOffer {
         this.price = price;
     }
 
-    public Character getName() {
-        return name;
-    }
+//    public Character getName() {
+//        return name;
+//    }
 
     public Integer getQuantity() {
         return quantity;
@@ -22,3 +22,4 @@ public class MultiPriceOffer {
         return price;
     }
 }
+
