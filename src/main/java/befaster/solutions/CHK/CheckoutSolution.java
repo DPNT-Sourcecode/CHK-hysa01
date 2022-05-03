@@ -15,7 +15,7 @@ public class CheckoutSolution {
 
         if (skusIsInvalid(skus)) {
             return -1;
-        } else if (skus.equals("")){
+        } else if (skus.equals("")) {
             return 0;
         }
         else {
@@ -26,7 +26,8 @@ public class CheckoutSolution {
 
             for (Character freebieOfferItem : freebieOfferMap.keySet()) {
                 Character freebieItem = freebieOfferMap.get(freebieOfferItem).getFreebieItem();
-                if (checkoutItems.containsKey(freebieOfferItem) && checkoutItems.containsKey(freebieItem)) {
+                if (checkoutItems.containsKey(freebieOfferItem)
+                        && checkoutItems.containsKey(freebieItem)) {
                     reduceQuantityForFreebieItem(freebieOfferItem, checkoutItems);
                 }
             }
@@ -42,20 +43,7 @@ public class CheckoutSolution {
                 } else {
                     total += price * quantity;
                 }
-//                    Integer offerQuantity = multiPriceOfferMap.get(item).quantity;
-//                    Integer offerPrice = multiPriceOfferMap.get(item).price;
-//                    if (offerQuantity < quantity) {
-//                        total += (quantity / offerQuantity) * offerPrice + (quantity % offerQuantity) * price;
-//                    }
-//                    else if (offerQuantity.equals(quantity)) {
-//                        total += offerPrice;
-//                    }
-//                    else {
-//                        total += quantity * price;
-//                    }
-//                } else {
-//                    total += quantity * price;
-//                }
+
             }
         }
         return total;
@@ -133,6 +121,7 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+
 
 
 
