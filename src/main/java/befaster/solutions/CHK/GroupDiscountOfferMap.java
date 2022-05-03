@@ -1,2 +1,5 @@
-package befaster.solutions.CHK;public class GroupDiscountOfferMap {
+package befaster.solutions.CHK;
+
+public class GroupDiscountOfferMap {
 }
+
