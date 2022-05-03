@@ -45,11 +45,13 @@ public class CheckoutSolution {
                         .collect(Collectors.toCollection(ArrayList::new));
                 ArrayList<Character> groupDiscountItemAccountedFor = new ArrayList<>();
                 for (Character groupDiscountItem : allGroupDiscountItemsInCheckout) {
-                    Integer groupDiscountPriceTotal = calculatePriceWithGroupDiscountOfferItems(groupDiscountItem,
-                            allGroupDiscountItemsInCheckout,
-                            groupDiscountItemAccountedFor,
-                            checkoutItems);
-                    total += groupDiscountPriceTotal;
+                    if (!groupDiscountItemAccountedFor.contains(groupDiscountItem)) {
+                        Integer groupDiscountPriceTotal = calculatePriceWithGroupDiscountOfferItems(groupDiscountItem,
+                                allGroupDiscountItemsInCheckout,
+                                groupDiscountItemAccountedFor,
+                                checkoutItems);
+                        total += groupDiscountPriceTotal;
+                    }
                 }
             }
 
@@ -185,3 +187,4 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+
