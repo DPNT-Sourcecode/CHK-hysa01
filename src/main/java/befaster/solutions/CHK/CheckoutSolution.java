@@ -6,6 +6,7 @@ import java.util.Map;
 import static befaster.solutions.CHK.ItemPriceMap.itemPriceMap;
 import static befaster.solutions.CHK.FreebieOfferMap.freebieOfferMap;
 import static befaster.solutions.CHK.MultiPriceOfferMap.multiPriceOfferMap;
+import static befaster.solutions.CHK.GroupDiscountOfferMap.groupDiscountOfferMap;
 
 
 public class CheckoutSolution {
@@ -31,6 +32,13 @@ public class CheckoutSolution {
                     reduceQuantityForFreebieItem(freebieOfferItem, checkoutItems);
                 }
             }
+
+            if (checkoutItems.keySet().stream().anyMatch(item -> groupDiscountOfferMap.containsKey(item))) {
+                
+            }
+
+
+
 
             for (Map.Entry<Character, Integer> entry : checkoutItems.entrySet()) {
                 Character item = entry.getKey();
@@ -77,6 +85,10 @@ public class CheckoutSolution {
         }
     }
 
+    private static Integer calculatePriceWithGroupDiscountOfferItems() {
+
+    }
+
     private static Integer calculatePriceWithMultiPriceOffers(Character item, Integer quantity, Integer price) {
         Integer totalPrice = 0;
         Integer biggestOfferQuantity = ((MultiPriceOffer) multiPriceOfferMap.get(item).get(0)).getQuantity();
@@ -121,3 +133,4 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+
