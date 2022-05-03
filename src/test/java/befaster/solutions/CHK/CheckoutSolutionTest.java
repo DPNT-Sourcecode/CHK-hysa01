@@ -64,6 +64,14 @@ public class CheckoutSolutionTest {
         assertEquals(275, checkoutSolution.checkout("EEEEEBBBBB").intValue());
         assertEquals(290, checkoutSolution.checkout("EEEEEBBBBBB").intValue());
         assertEquals(320, checkoutSolution.checkout("EEEEEBBBBBBB").intValue());
+
+        assertEquals(50, checkoutSolution.checkout("FFFFFFF").intValue());
+        assertEquals(40, checkoutSolution.checkout("FFFFFF").intValue());
+        assertEquals(40, checkoutSolution.checkout("FFFFF").intValue());
+        assertEquals(30, checkoutSolution.checkout("FFFF").intValue());
+        assertEquals(20, checkoutSolution.checkout("FFF").intValue());
+        assertEquals(20, checkoutSolution.checkout("FF").intValue());
+        assertEquals(10, checkoutSolution.checkout("F").intValue());
     }
 
 }

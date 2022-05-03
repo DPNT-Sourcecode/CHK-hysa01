@@ -11,6 +11,7 @@ public class ItemPriceMap {
         itemPriceMap.put('C', 20);
         itemPriceMap.put('D', 15);
         itemPriceMap.put('E', 40);
+        itemPriceMap.put('F', 10);
     }
 
 }
