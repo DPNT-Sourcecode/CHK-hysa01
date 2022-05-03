@@ -1,5 +1,6 @@
 package befaster.solutions.CHK;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -96,8 +97,18 @@ public class CheckoutSolution {
         }
     }
 
-    private static Integer calculatePriceWithGroupDiscountOfferItems() {
-        
+    private static Integer calculatePriceWithGroupDiscountOfferItems(Character groupDiscountItem,
+                                                                     ArrayList<Character> allGroupDiscountItemsInCheckout,
+                                                                     ArrayList<Character> groupDiscountItemAccountedFor,
+                                                                     Map<Character, Integer> checkoutItems) {
+        Integer totalPrice = 0;
+        Integer totalNumOfGroupMembers = allGroupDiscountItemsInCheckout.stream()
+                .filter(item -> groupDiscountOfferMap.get(groupDiscountItem).getGroup().contains(item))
+                .mapToInt(checkoutItems::get)
+                .sum();
+        Integer requiredNumberOfGroupMembers = groupDiscountOfferMap.get(groupDiscountItem)
+                .getRequiredNumOfGroupMembers();
+        Integer group
 
     }
 
@@ -145,5 +156,6 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+
 
 
