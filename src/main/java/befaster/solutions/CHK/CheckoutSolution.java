@@ -1,7 +1,9 @@
 package befaster.solutions.CHK;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static befaster.solutions.CHK.ItemPriceMap.itemPriceMap;
 import static befaster.solutions.CHK.FreebieOfferMap.freebieOfferMap;
@@ -34,7 +36,16 @@ public class CheckoutSolution {
             }
 
             if (checkoutItems.keySet().stream().anyMatch(item -> groupDiscountOfferMap.containsKey(item))) {
-                
+                ArrayList<Character> allGroupDiscountItemsInCheckout = checkoutItems.keySet().stream()
+                        .filter(item -> groupDiscountOfferMap.containsKey(item) && groupDiscountOfferMap.get(item)
+                                .getGroup()
+                                .contains(item))
+                        .collect(Collectors.toCollection(ArrayList::new));
+                ArrayList<Character> groupDiscountItemAccountedFor = new ArrayList<>();
+                for (Character groupDiscountItem : allGroupDiscountItemsInCheckout) {
+                    Integer groupDiscountPriceTotal = calculatePriceWithGroupDiscountOfferItems();
+                    total += groupDiscountPriceTotal;
+                }
             }
 
 
@@ -86,6 +97,7 @@ public class CheckoutSolution {
     }
 
     private static Integer calculatePriceWithGroupDiscountOfferItems() {
+        
 
     }
 
@@ -133,4 +145,5 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+
 
