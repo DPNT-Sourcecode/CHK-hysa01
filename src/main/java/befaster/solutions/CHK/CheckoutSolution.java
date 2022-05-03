@@ -2,6 +2,7 @@ package befaster.solutions.CHK;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -44,7 +45,10 @@ public class CheckoutSolution {
                         .collect(Collectors.toCollection(ArrayList::new));
                 ArrayList<Character> groupDiscountItemAccountedFor = new ArrayList<>();
                 for (Character groupDiscountItem : allGroupDiscountItemsInCheckout) {
-                    Integer groupDiscountPriceTotal = calculatePriceWithGroupDiscountOfferItems();
+                    Integer groupDiscountPriceTotal = calculatePriceWithGroupDiscountOfferItems(groupDiscountItem,
+                            allGroupDiscountItemsInCheckout,
+                            groupDiscountItemAccountedFor,
+                            checkoutItems);
                     total += groupDiscountPriceTotal;
                 }
             }
@@ -60,6 +64,8 @@ public class CheckoutSolution {
                 if (multiPriceOfferMap.containsKey(item)) {
                     Integer multiPriceTotal = calculatePriceWithMultiPriceOffers(item, quantity, price);
                     total += multiPriceTotal;
+                } else if (groupDiscountOfferMap.containsKey(item)) {
+                    ; // do nothing
                 } else {
                     total += price * quantity;
                 }
@@ -115,9 +121,24 @@ public class CheckoutSolution {
                 .collect(Collectors.toCollection(ArrayList::new));
 
         if (totalNumOfGroupMembers > requiredNumberOfGroupMembers) {
-            // sorted list so the remain
+            // sorted list so the remainderItem prices can be added from the one with the lowest price
+            // to always favour the customer
+            groupDiscountItemsInThisGroup.sort(Comparator.comparing(a -> itemPriceMap.get(a)));
+            Integer numOfRemainderItemsAfterDiscount = totalNumOfGroupMembers % requiredNumberOfGroupMembers;
+            Integer remainderPriceAfterDiscount = groupDiscountItemsInThisGroup.stream()
+                    .filter(item -> groupDiscountItemsInThisGroup.indexOf(item) < numOfRemainderItemsAfterDiscount)
+                    .mapToInt(item -> itemPriceMap.get(item))
+                    .sum();
+            totalPrice += totalNumOfGroupMembers / requiredNumberOfGroupMembers * groupDiscountPrice
+                    + remainderPriceAfterDiscount;
+            groupDiscountItemAccountedFor.addAll(groupDiscountItemsInThisGroup);
+        } else if (totalNumOfGroupMembers.equals(requiredNumberOfGroupMembers)) {
+            totalPrice += groupDiscountPrice;
+            groupDiscountItemAccountedFor.addAll(groupDiscountItemsInThisGroup);
+        } else {
+            totalPrice += checkoutItems.get(groupDiscountItem) * itemPriceMap.get(groupDiscountItem);
         }
-
+        return totalPrice;
     }
 
     private static Integer calculatePriceWithMultiPriceOffers(Character item, Integer quantity, Integer price) {
@@ -164,3 +185,4 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+
