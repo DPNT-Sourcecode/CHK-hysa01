@@ -108,7 +108,15 @@ public class CheckoutSolution {
                 .sum();
         Integer requiredNumberOfGroupMembers = groupDiscountOfferMap.get(groupDiscountItem)
                 .getRequiredNumOfGroupMembers();
-        Integer group
+        Integer groupDiscountPrice = groupDiscountOfferMap
+                .get(groupDiscountItem).getPrice();
+        ArrayList<Character> groupDiscountItemsInThisGroup = allGroupDiscountItemsInCheckout.stream()
+                .filter(item -> groupDiscountOfferMap.get(groupDiscountItem).getGroup().contains(item))
+                .collect(Collectors.toCollection(ArrayList::new));
+
+        if (totalNumOfGroupMembers > requiredNumberOfGroupMembers) {
+            // sorted list so the remain
+        }
 
     }
 
@@ -156,6 +164,3 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
-
-
-
