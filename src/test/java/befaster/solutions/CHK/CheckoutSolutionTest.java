@@ -9,12 +9,7 @@ import static befaster.solutions.CHK.CheckoutSolution.checkout;
 import static org.junit.Assert.*;
 
 public class CheckoutSolutionTest {
-    CheckoutSolution checkoutSolution;
-
-    @BeforeEach
-    void setUp() {
-        checkoutSolution = new CheckoutSolution();
-    }
+    CheckoutSolution checkoutSolution = new CheckoutSolution();
 
     @Test
     public void testIllegalInputLowerCase() {
@@ -40,19 +35,35 @@ public class CheckoutSolutionTest {
     }
 
     @Test
-    public void testOneOfferItem() {
-        assertEquals(85, checkoutSolution.checkout("ACD").intValue());
-        assertEquals(150, checkoutSolution.checkout("ACAA").intValue());
-        assertEquals(200, checkoutSolution.checkout("ACAAA").intValue());
+    public void testItemsWithOneMultiPriceOffer() {
+        assertEquals(65, checkoutSolution.checkout("BCD").intValue());
+        assertEquals(110, checkoutSolution.checkout("BCBBD").intValue());
     }
 
     @Test
-    public void testTwoOfferItems() {
-        assertEquals(80, checkoutSolution.checkout("AB").intValue());
-        assertEquals(145, checkoutSolution.checkout("ABAB").intValue());
-        assertEquals(175, checkoutSolution.checkout("AAABB").intValue());
-        assertEquals(290, checkoutSolution.checkout("ABBBACDAA").intValue());
+    public void testItemsWithTwoMultiPriceOffers() {
+        assertEquals(450, checkoutSolution.checkout("AAAAAAAAAAA").intValue());
+        assertEquals(400, checkoutSolution.checkout("AAAAAAAAAA").intValue());
+        assertEquals(380, checkoutSolution.checkout("AAAAAAAAA").intValue());
+        assertEquals(330, checkoutSolution.checkout("AAAAAAAA").intValue());
+        assertEquals(300, checkoutSolution.checkout("AAAAAAA").intValue());
+        assertEquals(250, checkoutSolution.checkout("AAAAAA").intValue());
+        assertEquals(200, checkoutSolution.checkout("AAAAA").intValue());
+        assertEquals(180, checkoutSolution.checkout("AAAA").intValue());
+        assertEquals(130, checkoutSolution.checkout("AAA").intValue());
+        assertEquals(100, checkoutSolution.checkout("AA").intValue());
+        assertEquals(50, checkoutSolution.checkout("A").intValue());
+    }
 
+    @Test
+    public void testItemsWithFreebieOffers() {
+        assertEquals(200, checkoutSolution.checkout("EEEEEB").intValue());
+        assertEquals(200, checkoutSolution.checkout("EEEEE").intValue());
+        assertEquals(230, checkoutSolution.checkout("EEEEEBBB").intValue());
+        assertEquals(245, checkoutSolution.checkout("EEEEEBBBB").intValue());
+        assertEquals(275, checkoutSolution.checkout("EEEEEBBBBB").intValue());
+        assertEquals(290, checkoutSolution.checkout("EEEEEBBBBBB").intValue());
+        assertEquals(320, checkoutSolution.checkout("EEEEEBBBBBBB").intValue());
     }
 
 }
