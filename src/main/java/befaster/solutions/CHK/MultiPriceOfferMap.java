@@ -46,16 +46,17 @@ public class MultiPriceOfferMap {
         multiPriceOfferMap.put('A', multiPriceOfferlistA);
         multiPriceOfferMap.put('B', multiPriceOfferlistB);
         multiPriceOfferMap.put('F', multiPriceOfferlistF);
-        multiPriceOfferMap.put('H', multiPriceOfferlistF);
-        multiPriceOfferMap.put('K', multiPriceOfferlistF);
-        multiPriceOfferMap.put('P', multiPriceOfferlistF);
-        multiPriceOfferMap.put('Q', multiPriceOfferlistF);
-        multiPriceOfferMap.put('U', multiPriceOfferlistF);
-        multiPriceOfferMap.put('V', multiPriceOfferlistF);
+        multiPriceOfferMap.put('H', multiPriceOfferlistH);
+        multiPriceOfferMap.put('K', multiPriceOfferlistK);
+        multiPriceOfferMap.put('P', multiPriceOfferlistP);
+        multiPriceOfferMap.put('Q', multiPriceOfferlistQ);
+        multiPriceOfferMap.put('U', multiPriceOfferlistU);
+        multiPriceOfferMap.put('V', multiPriceOfferlistV);
 
 
 
     }
 
 }
+
 
