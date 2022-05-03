@@ -10,6 +10,8 @@ public class ItemPriceMap {
         itemPriceMap.put('B', 30);
         itemPriceMap.put('C', 20);
         itemPriceMap.put('D', 15);
+        itemPriceMap.put('E', 40);
     }
 
 }
+
